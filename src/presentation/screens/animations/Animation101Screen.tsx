@@ -6,8 +6,10 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import { colors } from '../../../config/theme';
 import { useAnimation } from '../../hooks/useAnimation';
+import { ThemeContext } from '../../context/ThemeContext';
+import { useContext } from 'react';
+import { CustomView } from '../../components/ui/CustomView';
 
 export const Animation101Screen = () => {
   const {
@@ -18,12 +20,15 @@ export const Animation101Screen = () => {
     startMovingTopPosition,
   } = useAnimation();
 
+  const { colors } = useContext(ThemeContext);
+
   return (
-    <View style={styles.container}>
+    <CustomView style={styles.container}>
       {/* // !1* */}
       <Animated.View
         style={[
           styles.purpleBox,
+          { backgroundColor: colors.primary },
           {
             opacity: animatedOpacity,
             transform: [
@@ -44,12 +49,12 @@ export const Animation101Screen = () => {
           });
         }}
         style={{ marginTop: 10 }}>
-        <Text>Fade In</Text>
+        <Text style={{ color: colors.text }}>Fade In</Text>
       </Pressable>
       <Pressable onPress={() => fadeOut({})} style={{ marginTop: 10 }}>
-        <Text>Fade Out</Text>
+        <Text style={{ color: colors.text }}>Fade Out</Text>
       </Pressable>
-    </View>
+    </CustomView>
   );
 };
 
@@ -60,7 +65,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   purpleBox: {
-    backgroundColor: colors.primary,
     width: 150,
     height: 150,
   },

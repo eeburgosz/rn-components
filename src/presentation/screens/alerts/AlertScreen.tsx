@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Alert } from 'react-native';
 import { CustomView } from '../../components/ui/CustomView';
 import { Title } from '../../components/ui/Title';
 import { globalStyles } from '../../../config/theme';
 import { Button } from '../../components/ui/Button';
 
-import prompt from 'react-native-prompt-android';
+// import prompt from 'react-native-prompt-android';
+
 import { showPrompt } from '../../../config/adapters/prompt.adapter';
+import { ThemeContext } from '../../context/ThemeContext';
 
 export const AlertScreen = () => {
+  const { isDark } = useContext(ThemeContext);
+
   const createTwoButtonAlert = () =>
-    Alert.alert('Alert Title', 'My Alert Msg', [
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ],
       {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
+        userInterfaceStyle: isDark ? 'dark' : 'light',
       },
-      { text: 'OK', onPress: () => console.log('OK Pressed') },
-    ]);
+    );
 
   const createThreeButtonAlert = () =>
     Alert.alert(
@@ -35,13 +46,14 @@ export const AlertScreen = () => {
         },
         { text: 'OK', onPress: () => console.log('OK Pressed') },
       ],
-      // {
-      //   //! Para que se cierre tocando fuera del alert. No sirve en iOS. El onDismiss es para crear una acción si es necesario
-      //   cancelable: true,
-      //   onDismiss() {
-      //     console.log('onDismiss');
-      //   },
-      // },
+      {
+        //   //! Para que se cierre tocando fuera del alert. No sirve en iOS. El onDismiss es para crear una acción si es necesario
+        //   cancelable: true,
+        //   onDismiss() {
+        //     console.log('onDismiss');
+        //   },
+        userInterfaceStyle: isDark ? 'dark' : 'light',
+      },
     );
 
   const onShowPrompt = () => {

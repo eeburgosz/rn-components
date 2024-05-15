@@ -6,10 +6,6 @@ import { CustomSwitch } from '../../components/ui/CustomSwitch';
 import { Separator } from '../../components/ui/Separator';
 
 export const SwitchScreen = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () =>
-    setIsEnabled((previousState: any) => !previousState);
-
   const [state, setState] = useState({
     isActive: true,
     isHungry: false,
@@ -17,7 +13,7 @@ export const SwitchScreen = () => {
   });
 
   return (
-    <CustomView style={{ marginTop: 100, paddingHorizontal: 10 }}>
+    <CustomView margin style={{ marginTop: 100, paddingHorizontal: 10 }}>
       <Card>
         <CustomSwitch
           isOn={state.isActive}
