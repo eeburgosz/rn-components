@@ -1,4 +1,4 @@
-package com.componentsapp
+package com.ernestoburgos.rn-componentsapp
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity

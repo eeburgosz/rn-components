@@ -80,9 +80,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.componentsapp"
+    namespace "com.ernestoburgos.rn-componentsapp"
     defaultConfig {
-        applicationId "com.componentsapp"
+        applicationId "com.ernestoburgos.rn-componentsapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
